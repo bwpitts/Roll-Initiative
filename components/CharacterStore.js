@@ -6,7 +6,10 @@ class CharacterStore extends Container {
         name: '',
         roll: '',
         isVisible: false,
-        index: ''
+        index: '',
+        health: '',
+        charRace: '',
+        charClass: ''
     }
 
     toggleVisibility = () => {
@@ -18,24 +21,27 @@ class CharacterStore extends Container {
         if(this.state.index !== ''){
             let chars = this.state.characters.map((item, j) => {
                 if (j === this.state.index){
-                    let char = {key: item.key, name: this.state.name, roll: this.state.roll}
+                    let char = {key: item.key, name: this.state.name, roll: this.state.roll, health: this.state.health, charClass: this.state.charClass, charRace: this.state.charRace}
                     console.log(char);
                     return char
                 } else {
-                    return {key: item.key, name: item.name, roll: item.roll}
+                    return {key: item.key, name: item.name, roll: item.roll, health: item.health, charClass: item.charClass, charRace: item.charRace}
                 }
             })
             this.setState({
                 characters: chars,
                 name: '',
                 roll: '',
-                index: ''
+                index: '',
+                health: '',
+                charClass: '',
+                charRace: ''
             })
                 .then(() => this.sortCharacters(this.state.characters))
             this.toggleVisibility();
         } else {
-            characters.push({key: characters.length, name: this.state.name, roll: this.state.roll})
-            this.setState({characters, name: '', roll: '', isVisible: false, index: ''})
+            characters.push({key: characters.length, name: this.state.name, roll: this.state.roll, health: this.state.health, charClass: this.state.charClass, charRace: this.state.charRace})
+            this.setState({characters, name: '', roll: '', isVisible: false, index: '', health: '', charClass: '', charRace: ''})
                 .then(() => this.sortCharacters(this.state.characters))
         }
     }
@@ -43,13 +49,14 @@ class CharacterStore extends Container {
     sortCharacters = (characters) => {
         let char = characters.sort((a,b) => a.roll - b.roll)
         .map((item, i) => {
-            return{key: i, name: item.name, roll: item.roll}
+            return{key: i, name: item.name, roll: item.roll, health: item.health, charRace: item.charRace, charClass: item.charClass}
         })
         this.setState({characters: char});
     }
-    selectCharacter = (index, name, roll) => {
+
+    selectCharacter = (index, name, roll, health, charRace, charClass) => {
         this.toggleVisibility();
-        this.setState({index: parseInt(index), name, roll: parseInt(roll)});
+        this.setState({index: parseInt(index), name, roll: parseInt(roll), health: parseInt(health), charClass: charClass, charRace: charRace});
     }
 
     deleteCharacter = (index) => {

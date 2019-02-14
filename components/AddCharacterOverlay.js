@@ -33,6 +33,22 @@ const AddCharacterOverlay = () => {
                                     keyboardType='numeric'
                                     value={characterStore.state.roll.toString()}
                                 />
+                                <Input
+                                    placeholder="Character Health"
+                                    onChangeText={(value) => characterStore.setState({health: value})}
+                                    keyboardType='numeric'
+                                    value={characterStore.state.health.toString()}
+                                />
+                                <Input
+                                    placeholder="Race"
+                                    onChangeText={(value) => characterStore.setState({charRace: value})}
+                                    value={characterStore.state.charRace}
+                                />
+                                <Input
+                                    placeholder="Class"
+                                    onChangeText={(value) => characterStore.setState({charClass: value})}
+                                    value={characterStore.state.charClass}
+                                />
                                 <Button raised title="Add Character" onPress={characterStore.addCharacter.bind(this)}/>
                             </View>
                         </Overlay>

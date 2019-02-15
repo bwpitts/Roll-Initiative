@@ -1,55 +1,29 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 
 export default class Hexagon extends Component {
     render(){
         return(
-            <View style={styles.hexagon}>
-                <View style={styles.hexagonInner} />
-                <Text>1</Text>
-                <View style={styles.hexagonBefore} />
-                <View style={styles.hexagonAfter} />
+            <View style={styles.diceView}>
+                <ImageBackground source={require("../assets/images/d20.png")} style={styles.d20}>
+                    <Text>{this.props.roll}</Text>
+                </ImageBackground>
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    hexagon: {
-        width: 20,
-        height: 11
+    d20: {
+        width: 30,
+        height: 30,
+        justifyContent: "center",
+        alignItems: "center"
     },
-    hexagonInner: {
-        width: 20,
-        height: 11,
-        backgroundColor: 'red'
+    diceView: {
+        width: 30,
+        height: 30,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    hexagonAfter: {
-        position: 'absolute',
-        bottom: -5,
-        left: 0,
-        width: 0,
-        height: 0,
-        borderStyle: 'solid',
-        borderLeftWidth: 5,
-        borderLeftColor: 'transparent',
-        borderRightWidth: 5,
-        borderRightColor: 'transparent',
-        borderTopWidth: 5,
-        borderTopColor: 'red'
-    },
-    hexagonBefore: {
-        position: 'absolute',
-        top: -5,
-        left: 0,
-        width: 0,
-        height: 0,
-        borderStyle: 'solid',
-        borderLeftWidth: 5,
-        borderLeftColor: 'transparent',
-        borderRightWidth: 5,
-        borderRightColor: 'transparent',
-        borderBottomWidth: 5,
-        borderBottomColor: 'red'
-    }
 })

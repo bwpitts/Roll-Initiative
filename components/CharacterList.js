@@ -15,8 +15,8 @@ const CharacterList = () => {
                             key={char.key}
                             title={char.name}
                             subtitle={char.charRace + " - " + char.charClass}
-                            chevron
-                            badge={{value: char.roll}}
+                            leftIcon={<Hexagon roll={char.roll}/>}
+                            badge={{value: char.health, badgeStyle:styles.badge, status: "error", textStyle:{color: "black", transform: [{rotate: '-45deg'}]}}}
                             onPress={characterStore.selectCharacter.bind(this, char.key, char.name, char.roll, char.health, char.charRace, char.charClass)}
                             onLongPress={() => Alert.alert(
                                 "Delete Character",
@@ -36,12 +36,17 @@ const CharacterList = () => {
 }
 
 const styles = StyleSheet.create({
-    hex: {
-        position: "relative",
+    badge: {
         width: 30,
         height: 30,
-        backgroundColor: "#64C7CC",
-        margin: 10
+        borderTopLeftRadius:0,
+        borderBottomLeftRadius: 50,
+        borderTopRightRadius: 50,
+        borderBottomRightRadius: 50,
+        borderStyle: 'solid',
+        borderWidth: 3,
+        borderColor: 'red',
+        transform: [{rotate: "45deg"}]
     },
 
 })

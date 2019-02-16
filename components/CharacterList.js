@@ -4,6 +4,7 @@ import { ListItem } from 'react-native-elements';
 import { Subscribe } from 'unstated'
 import CharacterStore from './CharacterStore';
 import Hexagon from "./Hexagon";
+import HealthIcon from "./HealthIcon";
 
 const CharacterList = () => {
     return(
@@ -15,8 +16,8 @@ const CharacterList = () => {
                             key={char.key}
                             title={char.name}
                             subtitle={char.charRace + " - " + char.charClass}
-                            leftIcon={<Hexagon roll={char.roll}/>}
-                            badge={{value: char.health, badgeStyle:styles.badge, status: "error", textStyle:{color: "black", transform: [{rotate: '-45deg'}]}}}
+                            leftIcon={<HealthIcon health={char.health}/>}
+                            rightIcon={<Hexagon roll={char.roll}/>}
                             onPress={characterStore.selectCharacter.bind(this, char.key, char.name, char.roll, char.health, char.charRace, char.charClass)}
                             onLongPress={() => Alert.alert(
                                 "Delete Character",
@@ -35,20 +36,5 @@ const CharacterList = () => {
     )
 }
 
-const styles = StyleSheet.create({
-    badge: {
-        width: 30,
-        height: 30,
-        borderTopLeftRadius:0,
-        borderBottomLeftRadius: 50,
-        borderTopRightRadius: 50,
-        borderBottomRightRadius: 50,
-        borderStyle: 'solid',
-        borderWidth: 3,
-        borderColor: 'red',
-        transform: [{rotate: "45deg"}]
-    },
-
-})
 
 export default CharacterList

@@ -47,7 +47,7 @@ class CharacterStore extends Container {
     }
 
     sortCharacters = (characters) => {
-        let char = characters.sort((a,b) => a.roll - b.roll)
+        let char = characters.sort((a,b) => b.roll - a.roll)
         .map((item, i) => {
             return{key: i, name: item.name, roll: item.roll, health: item.health, charRace: item.charRace, charClass: item.charClass}
         })

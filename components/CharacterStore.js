@@ -22,7 +22,6 @@ class CharacterStore extends Container {
             let chars = this.state.characters.map((item, j) => {
                 if (j === this.state.index){
                     let char = {key: item.key, name: this.state.name, roll: this.state.roll, health: this.state.health, charClass: this.state.charClass, charRace: this.state.charRace}
-                    console.log(char);
                     return char
                 } else {
                     return {key: item.key, name: item.name, roll: item.roll, health: item.health, charClass: item.charClass, charRace: item.charRace}

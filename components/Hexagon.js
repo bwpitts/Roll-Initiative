@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, ImageBackground } from 'react-native';
 
 export default class Hexagon extends Component {
+    rollDie = () => {
+        let roll = Math.floor(Math.random() * 20) + 1;
+        console.log(roll);
+    }
+
     render(){
         return(
-            <View style={styles.diceView}>
+            <TouchableOpacity style={styles.diceView} onPress={this.rollDie}>
                 <ImageBackground source={require("../assets/images/d20.png")} style={styles.d20}>
                     <Text>{this.props.roll}</Text>
                 </ImageBackground>
-            </View>
+            </TouchableOpacity>
         )
     }
 }
